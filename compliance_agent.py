@@ -22,12 +22,18 @@ class ComplianceAgent(BaseAgent):
     Uses AI for interpretation only.
     """
     
-    # Risk threshold constants
+    # Risk threshold constants (configurable)
     HIGH_VALUE_THRESHOLD = 50000
     ROUND_NUMBER_THRESHOLD = 1000
     
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, 
+                 high_value_threshold: float = 50000,
+                 round_number_threshold: float = 1000):
         super().__init__("ComplianceAgent")
+        
+        # Configure thresholds
+        self.HIGH_VALUE_THRESHOLD = high_value_threshold
+        self.ROUND_NUMBER_THRESHOLD = round_number_threshold
         
         # Initialize AI for interpretation
         self.ai_enabled = False

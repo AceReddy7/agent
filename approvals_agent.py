@@ -208,9 +208,11 @@ Return only a number between 0.0 (no risk) and 1.0 (high risk).
                     # Ensure score is in valid range
                     return max(0.0, min(1.0, score))
                 else:
-                    return float(score_text)
-            except ValueError:
-                self.logger.warning(f"Invalid AI risk score format: {score_text}")
+                    # Try to parse the text directly
+                    score = float(score_text)
+                    return max(0.0, min(1.0, score))
+            except (ValueError, TypeError) as e:
+                self.logger.warning(f"Invalid AI risk score format: {score_text}, error: {e}")
                 return 0.5  # Default moderate risk
             
         except Exception as e:

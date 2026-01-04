@@ -151,8 +151,13 @@ Format: {{"data": {{...}}, "confidence_scores": {{...}}}}
             )
             
             # Parse response
-            result = json.loads(response.choices[0].message.content)
-            return result
+            try:
+                result = json.loads(response.choices[0].message.content)
+                return result
+            except json.JSONDecodeError as e:
+                self.logger.error(f"AI returned invalid JSON: {e}")
+                # Fallback to mock extraction
+                return self._extract_mock(file_path)
             
         except Exception as e:
             error_msg = str(e)
