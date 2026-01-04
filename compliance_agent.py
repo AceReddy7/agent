@@ -263,7 +263,7 @@ Keep the response concise and actionable.
     def _get_tax_rates(self) -> Dict[str, float]:
         """Get tax rates by jurisdiction"""
         return {
-            "NY": 0.08875,  # New York
+            "NY": 0.08,     # New York
             "CA": 0.0725,   # California
             "TX": 0.0625,   # Texas
             "FL": 0.06,     # Florida

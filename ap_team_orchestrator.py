@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 AI Accounts Payable Team - Main Orchestrator
 
@@ -93,7 +94,7 @@ class APTeamOrchestrator:
         
         # Step 1: Intake - receive the invoice
         invoice = self.intake_agent.receive_invoice(file_path, source)
-        print(f"✓ Invoice received: {invoice.invoice_id}")
+        print(f"[OK] Invoice received: {invoice.invoice_id}")
         
         # Step 2: Process through the chain
         invoice = self.intake_agent.handle_and_pass(invoice)
@@ -116,12 +117,12 @@ class APTeamOrchestrator:
         print(f"")
         
         print(f"Processing Results:")
-        print(f"  ✓ Extraction: {len(invoice.extracted_data)} fields extracted")
-        print(f"  {'✓' if invoice.validation_results.get('passed') else '✗'} Validation: {invoice.validation_results.get('passed', False)}")
-        print(f"  {'✓' if invoice.matching_results.get('is_clean') else '✗'} Matching: {invoice.matching_results.get('match_type', 'unknown')}")
-        print(f"  {'✓' if invoice.compliance_results.get('compliant') else '✗'} Compliance: {invoice.compliance_results.get('compliant', False)}")
-        print(f"  {'✓' if invoice.approval_results.get('approval_decision') == 'approved' else '✗'} Approval: {invoice.approval_results.get('approval_decision', 'unknown')}")
-        print(f"  {'✓' if invoice.posting_results.get('posted') else '✗'} Posting: {invoice.posting_results.get('posted', False)}")
+        print(f"  [OK] Extraction: {len(invoice.extracted_data)} fields extracted")
+        print(f"  {'[OK]' if invoice.validation_results.get('passed') else '[X]'} Validation: {invoice.validation_results.get('passed', False)}")
+        print(f"  {'[OK]' if invoice.matching_results.get('is_clean') else '[X]'} Matching: {invoice.matching_results.get('match_type', 'unknown')}")
+        print(f"  {'[OK]' if invoice.compliance_results.get('compliant') else '[X]'} Compliance: {invoice.compliance_results.get('compliant', False)}")
+        print(f"  {'[OK]' if invoice.approval_results.get('approval_decision') == 'approved' else '[X]'} Approval: {invoice.approval_results.get('approval_decision', 'unknown')}")
+        print(f"  {'[OK]' if invoice.posting_results.get('posted') else '[X]'} Posting: {invoice.posting_results.get('posted', False)}")
         print(f"")
         
         if invoice.errors:

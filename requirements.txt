@@ -8,16 +8,16 @@ Pillow==10.1.0
 pytesseract==0.3.10
 
 # OpenAI for AI capabilities (Copilot knowledge source)
-openai==1.12.0
+openai>=1.54.0
 
 # Data Processing
-pandas==2.1.4
-numpy==1.26.3
+pandas>=2.2.0
+numpy>=1.26.4
 
 # API and Web Framework
-fastapi==0.109.0
-uvicorn==0.27.0
-pydantic==2.5.3
+fastapi>=0.115.0
+uvicorn>=0.32.0
+pydantic>=2.10.0
 
 # Database (for storing invoices and audit trails)
 sqlalchemy==2.0.25

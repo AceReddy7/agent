@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
 """
-Agent Verification Script
-Verifies that each agent follows its specified AI usage requirements.
+Verification Script for AI Accounts Payable Team
+
+This script verifies that all agents are properly implemented
+according to their specified roles and AI usage requirements.
 """
 
 def verify_agents():
@@ -15,63 +18,63 @@ def verify_agents():
         {
             "name": "Intake Agent",
             "role": "Entry Point Worker",
-            "ai_usage": "❌ None",
+            "ai_usage": "[NO AI]",
             "verified": True,
             "description": "Workflow-based agent. Receives invoices, assigns IDs, stores immutably."
         },
         {
             "name": "Extraction Agent",
             "role": "Data Reader",
-            "ai_usage": "✅ Core",
+            "ai_usage": "[AI] Core",
             "verified": True,
             "description": "AI-powered extraction. Uses OpenAI to extract all invoice data."
         },
         {
             "name": "Validation Agent",
             "role": "First Quality Gate / Sanity Checker",
-            "ai_usage": "❌ None",
+            "ai_usage": "[NO AI]",
             "verified": True,
             "description": "Rules-based validation. Checks vendors, duplicates, required fields."
         },
         {
             "name": "Matching Agent",
             "role": "Financial Consistency Checker / PO Matcher",
-            "ai_usage": "⚠️ Edge Cases",
+            "ai_usage": "[AI-LIMITED] Edge Cases",
             "verified": True,
             "description": "PO matching with rules. AI only for complex edge case analysis."
         },
         {
             "name": "Compliance Agent",
             "role": "Regulatory Safety Layer / Policy & Tax Enforcer",
-            "ai_usage": "⚠️ Interpretation Only",
+            "ai_usage": "[AI-LIMITED] Interpretation Only",
             "verified": True,
             "description": "Rules-based compliance. AI only for interpreting complex issues."
         },
         {
             "name": "Approvals Agent",
             "role": "Approval Logic Executor / Decision Router",
-            "ai_usage": "⚠️ Risk Scoring",
+            "ai_usage": "[AI-LIMITED] Risk Scoring",
             "verified": True,
             "description": "Approval routing logic. AI only for enhanced risk scoring."
         },
         {
             "name": "Posting Agent",
             "role": "System of Record Writer / ERP Operator",
-            "ai_usage": "❌ None",
+            "ai_usage": "[NO AI]",
             "verified": True,
             "description": "ERP integration. Posts invoices with GL coding, no AI."
         },
         {
             "name": "Audit Agent",
             "role": "Continuous Oversight / Observer",
-            "ai_usage": "⚠️ Summaries",
+            "ai_usage": "[AI-LIMITED] Summaries",
             "verified": True,
             "description": "Audit trail creation. AI only for generating executive summaries."
         },
         {
             "name": "Lead Agent",
             "role": "Operational Supervisor",
-            "ai_usage": "⚠️ Pattern Detection",
+            "ai_usage": "[AI-LIMITED] Pattern Detection",
             "verified": True,
             "description": "Team management. AI only for detecting patterns in performance."
         }
@@ -81,7 +84,7 @@ def verify_agents():
     
     all_verified = True
     for i, agent in enumerate(agents, 1):
-        status = "✓ PASS" if agent["verified"] else "✗ FAIL"
+        status = "[PASS]" if agent["verified"] else "[FAIL]"
         print(f"{i}. {agent['name']}")
         print(f"   Role: {agent['role']}")
         print(f"   AI Usage: {agent['ai_usage']}")
@@ -94,20 +97,20 @@ def verify_agents():
     
     print("="*70)
     if all_verified:
-        print("✓ ALL AGENTS VERIFIED - Requirements Met!")
+        print("[OK] ALL AGENTS VERIFIED - Requirements Met!")
         print()
         print("Agent AI Usage Summary:")
-        print("  - Intake: ❌ None (workflow only)")
-        print("  - Extraction: ✅ Core (AI-powered data extraction)")
-        print("  - Validation: ❌ None (rules-based)")
-        print("  - Matching: ⚠️ Edge cases (AI for complex scenarios)")
-        print("  - Compliance: ⚠️ Interpretation (AI for complex issues)")
-        print("  - Approvals: ⚠️ Risk scoring (AI-enhanced scoring)")
-        print("  - Posting: ❌ None (system integration)")
-        print("  - Audit: ⚠️ Summaries (AI for executive summaries)")
-        print("  - Lead: ⚠️ Pattern detection (AI for team analytics)")
+        print("  - Intake: [NO AI] (workflow only)")
+        print("  - Extraction: [AI] Core (AI-powered data extraction)")
+        print("  - Validation: [NO AI] (rules-based)")
+        print("  - Matching: [AI-LIMITED] Edge cases (AI for complex scenarios)")
+        print("  - Compliance: [AI-LIMITED] Interpretation (AI for complex issues)")
+        print("  - Approvals: [AI-LIMITED] Risk scoring (AI-enhanced scoring)")
+        print("  - Posting: [NO AI] (system integration)")
+        print("  - Audit: [AI-LIMITED] Summaries (AI for executive summaries)")
+        print("  - Lead: [AI-LIMITED] Pattern detection (AI for team analytics)")
     else:
-        print("✗ VERIFICATION FAILED - Some agents do not meet requirements")
+        print("[FAIL] VERIFICATION FAILED - Some agents do not meet requirements")
     
     print("="*70)
     
@@ -132,9 +135,9 @@ def verify_workflow():
     ]
     
     for step, description in workflow_steps:
-        print(f"✓ {step}: {description}")
+        print(f"[OK] {step}: {description}")
     
-    print("\n✓ WORKFLOW VERIFIED - Complete pipeline functional!")
+    print("\n[OK] WORKFLOW VERIFIED - Complete pipeline functional!")
     print("="*70)
 
 
@@ -151,11 +154,11 @@ def test_basic_functionality():
         
         # Initialize
         orchestrator = APTeamOrchestrator()
-        print("✓ Orchestrator initialized")
+        print("[OK] Orchestrator initialized")
         
         # Verify all agents registered
         assert len(orchestrator.lead_agent.team) == EXPECTED_WORKER_AGENTS, f"Expected {EXPECTED_WORKER_AGENTS} worker agents"
-        print(f"✓ All {EXPECTED_WORKER_AGENTS} worker agents registered with Lead Agent")
+        print(f"[OK] All {EXPECTED_WORKER_AGENTS} worker agents registered with Lead Agent")
         
         # Verify agent chain
         assert orchestrator.intake_agent.next_agent == orchestrator.extraction_agent
@@ -165,13 +168,13 @@ def test_basic_functionality():
         assert orchestrator.compliance_agent.next_agent == orchestrator.approvals_agent
         assert orchestrator.approvals_agent.next_agent == orchestrator.posting_agent
         assert orchestrator.posting_agent.next_agent == orchestrator.audit_agent
-        print("✓ Agent processing chain configured correctly")
+        print("[OK] Agent processing chain configured correctly")
         
-        print("\n✓ BASIC FUNCTIONALITY TEST PASSED!")
+        print("\n[OK] BASIC FUNCTIONALITY TEST PASSED!")
         return True
         
     except Exception as e:
-        print(f"\n✗ FUNCTIONALITY TEST FAILED: {e}")
+        print(f"\n[FAIL] FUNCTIONALITY TEST FAILED: {e}")
         return False
     
     finally:
@@ -182,10 +185,10 @@ def main():
     """Run all verifications"""
     
     print()
-    print("╔" + "="*68 + "╗")
-    print("║" + " "*15 + "AI ACCOUNTS PAYABLE TEAM" + " "*29 + "║")
-    print("║" + " "*20 + "VERIFICATION SUITE" + " "*30 + "║")
-    print("╚" + "="*68 + "╝")
+    print("+" + "="*68 + "+")
+    print("|" + " "*15 + "AI ACCOUNTS PAYABLE TEAM" + " "*29 + "|")
+    print("|" + " "*20 + "VERIFICATION SUITE" + " "*30 + "|")
+    print("+" + "="*68 + "+")
     print()
     
     # Verify agents
@@ -200,13 +203,13 @@ def main():
     # Final summary
     print("\nFINAL VERIFICATION SUMMARY:")
     print("="*70)
-    print(f"  Agents: {'✓ PASS' if agents_ok else '✗ FAIL'}")
-    print(f"  Workflow: ✓ PASS")
-    print(f"  Functionality: {'✓ PASS' if functionality_ok else '✗ FAIL'}")
+    print(f"  Agents: {'[OK]' if agents_ok else '[FAIL]'}")
+    print(f"  Workflow: [OK]")
+    print(f"  Functionality: {'[OK]' if functionality_ok else '[FAIL]'}")
     print("="*70)
     
     if agents_ok and functionality_ok:
-        print("\n🎉 ALL VERIFICATIONS PASSED!")
+        print("\n*** ALL VERIFICATIONS PASSED! ***")
         print("   The AI Accounts Payable Team is ready for use.")
         print("   Each agent follows its specified role and AI usage.")
         print()
@@ -216,7 +219,7 @@ def main():
         print("   3. Integrate with your ERP system")
         print()
     else:
-        print("\n⚠️ SOME VERIFICATIONS FAILED")
+        print("\n*** SOME VERIFICATIONS FAILED ***")
         print("   Please review the output above for details.")
         print()
     

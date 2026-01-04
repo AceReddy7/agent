@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Example Usage of AI Accounts Payable Team
 
@@ -24,10 +25,10 @@ Acme Corporation
 123 Business St, Suite 100
 New York, NY 10001
 
-Invoice Number: INV-2024-001
+Invoice Number: INV-2024-0001
 Invoice Date: 2024-01-15
 Due Date: 2024-02-15
-Purchase Order: PO-2024-001
+Purchase Order: PO-2024-0001
 
 Bill To:
 Your Company
