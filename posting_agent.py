@@ -81,6 +81,17 @@ class PostingAgent(BaseAgent):
                     posting_results["errors"].append(error_msg)
                     self.logger.warning(error_msg)
                     
+            except (ConnectionError, TimeoutError) as e:
+                # Network or timeout errors - retry
+                error_msg = f"Network error on attempt {attempt}: {str(e)}"
+                posting_results["errors"].append(error_msg)
+                self.logger.error(error_msg)
+            except ValueError as e:
+                # Data validation errors - don't retry
+                error_msg = f"Data validation error: {str(e)}"
+                posting_results["errors"].append(error_msg)
+                self.logger.error(error_msg)
+                break  # Don't retry on data errors
             except Exception as e:
                 error_msg = f"Posting attempt {attempt} failed: {str(e)}"
                 posting_results["errors"].append(error_msg)

@@ -96,10 +96,12 @@ class MatchingAgent(BaseAgent):
                     matching_results["is_clean"] = True
                 else:
                     matching_results["match_type"] = "exception"
-                    # Use AI for edge case analysis
+                    # Use AI for edge case analysis only for complex or high-value cases
                     if self.ai_enabled and matching_results["issues"]:
-                        edge_case_analysis = self._analyze_edge_case(invoice.extracted_data, po, matching_results)
-                        matching_results["edge_case_analysis"] = edge_case_analysis
+                        # Only use AI for significant exceptions
+                        if invoice.extracted_data.get("total_amount", 0) > 5000 or len(matching_results["issues"]) > 2:
+                            edge_case_analysis = self._analyze_edge_case(invoice.extracted_data, po, matching_results)
+                            matching_results["edge_case_analysis"] = edge_case_analysis
                         
         # Store matching results
         invoice.matching_results = matching_results

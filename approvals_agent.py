@@ -190,14 +190,28 @@ Return only a number between 0.0 (no risk) and 1.0 (high risk).
             response = self.client.chat.completions.create(
                 model="gpt-4",
                 messages=[
-                    {"role": "system", "content": "You are a financial risk assessment expert. Return only a numerical risk score."},
+                    {"role": "system", "content": "You are a financial risk assessment expert. Return only a numerical risk score between 0.0 and 1.0."},
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.3
             )
             
             score_text = response.choices[0].message.content.strip()
-            return float(score_text)
+            
+            # Validate and extract numeric score
+            try:
+                # Try to extract first number if response contains explanation
+                import re
+                numbers = re.findall(r'0\.\d+|1\.0|0', score_text)
+                if numbers:
+                    score = float(numbers[0])
+                    # Ensure score is in valid range
+                    return max(0.0, min(1.0, score))
+                else:
+                    return float(score_text)
+            except ValueError:
+                self.logger.warning(f"Invalid AI risk score format: {score_text}")
+                return 0.5  # Default moderate risk
             
         except Exception as e:
             self.logger.error(f"AI risk scoring failed: {e}")

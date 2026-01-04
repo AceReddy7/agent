@@ -143,6 +143,9 @@ def test_basic_functionality():
     
     print("\nBASIC FUNCTIONALITY TEST:\n")
     
+    # Expected number of worker agents (excluding Lead Agent)
+    EXPECTED_WORKER_AGENTS = 8
+    
     try:
         from ap_team_orchestrator import APTeamOrchestrator
         
@@ -151,8 +154,8 @@ def test_basic_functionality():
         print("✓ Orchestrator initialized")
         
         # Verify all agents registered
-        assert len(orchestrator.lead_agent.team) == 8, "Expected 8 worker agents"
-        print("✓ All 8 worker agents registered with Lead Agent")
+        assert len(orchestrator.lead_agent.team) == EXPECTED_WORKER_AGENTS, f"Expected {EXPECTED_WORKER_AGENTS} worker agents"
+        print(f"✓ All {EXPECTED_WORKER_AGENTS} worker agents registered with Lead Agent")
         
         # Verify agent chain
         assert orchestrator.intake_agent.next_agent == orchestrator.extraction_agent

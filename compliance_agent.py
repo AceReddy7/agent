@@ -22,6 +22,10 @@ class ComplianceAgent(BaseAgent):
     Uses AI for interpretation only.
     """
     
+    # Risk threshold constants
+    HIGH_VALUE_THRESHOLD = 50000
+    ROUND_NUMBER_THRESHOLD = 1000
+    
     def __init__(self, api_key: Optional[str] = None):
         super().__init__("ComplianceAgent")
         
@@ -186,11 +190,11 @@ class ComplianceAgent(BaseAgent):
         total_amount = data.get("total_amount", 0)
         
         # Flag high-value invoices
-        if total_amount > 50000:
+        if total_amount > self.HIGH_VALUE_THRESHOLD:
             risks.append(f"High-value invoice: ${total_amount}")
             
         # Check for round numbers (potential fraud indicator)
-        if total_amount > 0 and total_amount % 1000 == 0:
+        if total_amount > 0 and total_amount % self.ROUND_NUMBER_THRESHOLD == 0:
             risks.append(f"Round number invoice: ${total_amount} (potential fraud indicator)")
             
         # Check payment terms

@@ -155,7 +155,11 @@ Format: {{"data": {{...}}, "confidence_scores": {{...}}}}
             return result
             
         except Exception as e:
-            self.logger.error(f"AI extraction failed: {e}")
+            error_msg = str(e)
+            if "rate_limit" in error_msg.lower() or "quota" in error_msg.lower():
+                self.logger.error(f"AI extraction failed due to API limits: {e}")
+            else:
+                self.logger.error(f"AI extraction failed: {e}")
             # Fallback to mock extraction
             return self._extract_mock(file_path)
             
