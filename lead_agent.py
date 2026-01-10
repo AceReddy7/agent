@@ -1,10 +1,18 @@
 """
 Lead Agent - Operational Supervisor
-Role: Manages all AI workers, not invoices. Monitors all 8 workers,
+
+Role: Manages all AI workers (not individual invoices). Monitors all 8 workers,
       detects bottlenecks or failures, re-routes workloads,
-      escalates unresolved issues, produces team-level reports
+      escalates unresolved issues, produces team-level reports.
 
 NOTE: This agent uses AI for PATTERN DETECTION only
+
+Architecture: This supervisor-level agent provides team management capabilities:
+- Real-time performance monitoring of all worker agents
+- Automatic detection of processing bottlenecks and failure patterns
+- Intelligent workload re-routing for failed invoices
+- Escalation of critical issues to human supervisors
+- Comprehensive team performance reporting and analytics
 """
 
 import time
@@ -22,7 +30,16 @@ except ImportError:
 class LeadAgent(BaseAgent):
     """
     Operational supervisor that manages all worker agents.
-    Uses AI for pattern detection only.
+    
+    Provides team-level management and monitoring without processing
+    individual invoices. Uses AI for pattern detection in team performance.
+    
+    Features:
+    - Monitors all 8 worker agents for performance issues
+    - Detects bottlenecks and failure patterns
+    - Re-routes failed invoices intelligently
+    - Escalates critical issues
+    - Generates comprehensive team reports
     """
     
     def __init__(self, api_key: Optional[str] = None):

@@ -1,0 +1,26 @@
+
+INVOICE
+
+Local Vendor LLC
+200 Service Road
+Boston, MA 02101
+
+Invoice Number: INV-2024-3001
+Invoice Date: 2024-01-10
+Due Date: 2024-02-10
+Purchase Order: PO-2024-5003
+
+Bill To:
+Our Company
+100 Main Street
+New York, NY 10001
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Office Supplies                   1        $450.00      $450.00
+
+                                        Subtotal:      $450.00
+                                        Tax (8.5%):     $38.25
+                                        TOTAL:         $488.25
+
+Payment Terms: Net 30
+Notes: Monthly office supplies reorder

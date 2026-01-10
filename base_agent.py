@@ -1,6 +1,8 @@
 """
 Base Agent Framework for AI Accounts Payable Team
-This module provides the foundational classes for all agents.
+
+This module provides foundational classes and enums for all agents in the
+AI Accounts Payable processing pipeline.
 """
 
 import logging
@@ -10,11 +12,18 @@ from typing import Any, Dict, List, Optional
 from enum import Enum
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(levelname)s:%(name)s:%(message)s'
+)
 
 
 class InvoiceStatus(Enum):
-    """Invoice processing status"""
+    """Invoice processing status enum.
+    
+    Represents all possible states of an invoice as it flows through
+    the AI Accounts Payable processing pipeline.
+    """
     RECEIVED = "received"
     EXTRACTING = "extracting"
     EXTRACTED = "extracted"
@@ -34,7 +43,12 @@ class InvoiceStatus(Enum):
 
 
 class Invoice:
-    """Invoice data model"""
+    """Invoice data model.
+    
+    Represents an invoice with complete tracking of its journey through
+    the AI Accounts Payable pipeline, including extracted data, validation
+    results, audit trail, and error tracking.
+    """
     
     def __init__(self, invoice_id: str):
         self.invoice_id = invoice_id
@@ -53,8 +67,14 @@ class Invoice:
         self.errors = []
         self.warnings = []
         
-    def add_audit_entry(self, agent: str, action: str, result: Any):
-        """Add an entry to the audit trail"""
+    def add_audit_entry(self, agent: str, action: str, result: Any) -> None:
+        """Add an entry to the audit trail.
+        
+        Args:
+            agent: Name of the agent adding the entry
+            action: Description of the action taken
+            result: Result or data from the action
+        """
         entry = {
             "timestamp": datetime.now().isoformat(),
             "agent": agent,
@@ -102,7 +122,12 @@ class Invoice:
 
 
 class BaseAgent(ABC):
-    """Base class for all agents in the AP team"""
+    """Base class for all agents in the AP team.
+    
+    Provides common functionality for invoice processing agents, including
+    metrics tracking, error handling, and chain-of-responsibility pattern
+    implementation.
+    """
     
     def __init__(self, agent_name: str):
         self.agent_name = agent_name

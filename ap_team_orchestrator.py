@@ -3,7 +3,8 @@
 AI Accounts Payable Team - Main Orchestrator
 
 This module orchestrates the entire AI AP team workflow.
-It connects all agents in the processing pipeline and manages the invoice lifecycle.
+It connects all agents in the processing pipeline and manages the invoice lifecycle
+with comprehensive error handling and team monitoring capabilities.
 """
 
 import os
@@ -23,7 +24,10 @@ from lead_agent import LeadAgent
 class APTeamOrchestrator:
     """
     Main orchestrator for the AI Accounts Payable Team.
-    Manages all agents and coordinates invoice processing.
+    
+    Manages all agents and coordinates invoice processing through the
+    complete pipeline, from intake to posting, with comprehensive
+    audit trails and error handling.
     """
     
     def __init__(self, openai_api_key: Optional[str] = None):
