@@ -1,0 +1,25 @@
+
+INVOICE
+
+Acme Corporation
+123 Business St, Suite 100
+New York, NY 10001
+
+Invoice Number: INV-2024-0001
+Invoice Date: 2024-01-15
+Due Date: 2024-02-15
+Purchase Order: PO-2024-0001
+
+Bill To:
+Your Company
+456 Main Street
+Anytown, CA 90001
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Professional Services            10     $100.00      $1,000.00
+
+                                        Subtotal:    $1,000.00
+                                        Tax (8%):       $80.00
+                                        TOTAL:       $1,080.00
+
+Payment Terms: Net 30

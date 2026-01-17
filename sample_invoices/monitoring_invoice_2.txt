@@ -1,0 +1,15 @@
+
+INVOICE
+Tech Solutions Inc
+Invoice Number: INV-002
+Invoice Date: 2024-01-08
+Due Date: 2024-02-08
+Purchase Order: PO-002
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Consulting Services               5     $500.00      $2,500.00
+
+Subtotal: $2,500.00
+Tax (8%): $200.00
+TOTAL: $2,700.00
+Payment Terms: Net 45

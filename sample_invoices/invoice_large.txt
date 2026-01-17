@@ -1,0 +1,27 @@
+
+INVOICE
+
+Global Services Ltd
+888 Commerce Boulevard
+London, UK
+
+Invoice Number: INV-2024-2001
+Invoice Date: 2024-01-08
+Due Date: 2024-02-08
+Purchase Order: PO-2024-5002
+
+Bill To:
+Our Company
+100 Main Street
+New York, NY 10001
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Consulting Services               200    $250.00     $50,000.00
+Project Management                50     $150.00     $7,500.00
+
+                                        Subtotal:   $57,500.00
+                                        Tax (8.5%):  $4,887.50
+                                        TOTAL:      $62,387.50
+
+Payment Terms: Net 45
+Notes: Q1 2024 consulting engagement

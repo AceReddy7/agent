@@ -1,0 +1,15 @@
+
+INVOICE
+Acme Corporation
+Invoice Number: INV-001
+Invoice Date: 2024-01-15
+Due Date: 2024-02-15
+Purchase Order: PO-001
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Professional Services            10     $100.00      $1,000.00
+
+Subtotal: $1,000.00
+Tax (8%): $80.00
+TOTAL: $1,080.00
+Payment Terms: Net 30

@@ -1,0 +1,15 @@
+
+INVOICE
+Global Services
+Invoice Number: INV-003
+Invoice Date: 2024-01-12
+Due Date: 2024-02-12
+Purchase Order: PO-003
+
+ITEM DESCRIPTION                QTY    UNIT PRICE    TOTAL
+Support Services                10     $150.00      $1,500.00
+
+Subtotal: $1,500.00
+Tax (8%): $120.00
+TOTAL: $1,620.00
+Payment Terms: Net 30
